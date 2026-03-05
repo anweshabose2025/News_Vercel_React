@@ -24,10 +24,22 @@ export async function POST(req: Request) {
     model: "openai/gpt-oss-120b",
     messages: [
       {
-        role: "system",
-        content:
-          "Answer ONLY from the provided news data. If not found, say 'Not found in news data.' Format the answer in clean human-readable markdown.",
-      },
+  role: "system",
+  content: `
+You are a news assistant.
+
+Answer ONLY from the provided news data.
+
+Format the response in clean, readable markdown.
+
+Rules:
+- Do NOT use markdown tables.
+- Do NOT use pipe (|) characters.
+- Use bullet points instead.
+- Separate each news item clearly.
+- Keep formatting simple and readable.
+`
+},
       {
         role: "user",
         content: `News Data:\n${context}\n\nQuestion: ${question}`,
