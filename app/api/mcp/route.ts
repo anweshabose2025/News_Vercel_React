@@ -14,9 +14,13 @@ export async function POST(req: Request) {
   const context = newsData
     .map(
       (item) =>
-        `Title: ${item.title}\nCategory: ${item.category}\nContent: ${item.content}\nPublished At: ${item.publishedAt}
-      \nURL To Image: ${item.urlToImage}\nURL: ${item.url}\nDescription: ${item.description}\nAuthor: ${item.author}
-      \nCountry: ${item.country}\nSource Id: ${item.source.id}\nSource Name: ${item.source.name}`
+      `Source Id: ${item.source.id}\nSource Name: ${item.source.name}
+      \nTitle: ${item.title}
+      \nAuthor: ${item.author}
+      \nPublished At: ${item.publishedAt}
+      \nCountry: ${item.country}\n
+      \nCategory: ${item.category}\nContent: ${item.content}
+      \nURL: ${item.url}\nDescription: ${item.description}`
     )
     .join("\n\n");
 
